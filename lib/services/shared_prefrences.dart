@@ -12,4 +12,14 @@ class SharedPrefService {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getBool('isLoggedIn');
   }
+
+  static setUid(String uid) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.setString('uid', uid);
+  }
+
+  static Future<bool> getUid() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getBool('uid');
+  }
 }

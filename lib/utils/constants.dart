@@ -1,8 +1,15 @@
+import 'package:country_code_picker/country_code_picker.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:io';
 
 class ImageConstants {
   // static String loader = "assets/images/loader.gif";
+}
+
+class Constants {
+  static Color fbColor = Color(0xff3b5998);
+  static CountryCode countryCode;
 }
 
 class ApiUrls {

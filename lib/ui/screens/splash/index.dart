@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:login_flow/model/splash_model.dart';
 import 'package:login_flow/services/screen_ratio.dart';
-import 'package:login_flow/services/shared_prefrences.dart';
-import 'package:login_flow/ui/home_page/index.dart';
+import 'package:provider/provider.dart';
 
 class Splash extends StatefulWidget {
   Splash({Key key}) : super(key: key);
@@ -15,8 +15,6 @@ class _SplashState extends State<Splash> {
   SizeConfig sizeConfig = SizeConfig();
   Completer _completer = new Completer();
 
-  bool isLoggedIn = false;
-
   wait() {
     Future.delayed(Duration(seconds: 2)).then((_) {
       _completer.complete();
@@ -24,17 +22,8 @@ class _SplashState extends State<Splash> {
   }
 
   checkLogin() async {
-    isLoggedIn = await SharedPrefService.getIsLoggedIn();
     if (!_completer.isCompleted) await _completer.future;
-    if (isLoggedIn) {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => MyHomePage(
-            title: "demo",
-          ),
-        ),
-      );
-    } else {}
+    Navigator.of(context).pushReplacementNamed("/SignUp");
   }
 
   @override
